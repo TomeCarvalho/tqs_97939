@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="">
+    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="Fix issues causing warnings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/euromillions/Dip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/euromillions/Dip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/euromillions/DipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/euromillions/DipTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +30,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -71,8 +73,23 @@
       <option name="presentableId" value="Default" />
       <updated>1646926559857</updated>
       <workItem from="1646926561048" duration="1196000" />
-      <workItem from="1647175985278" duration="428000" />
+      <workItem from="1647175985278" duration="2043000" />
     </task>
+    <task id="LOCAL-00001" summary="Fix issues causing warnings">
+      <created>1647176439822</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647176439822</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix issues causing warnings">
+      <created>1647176453137</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647176453137</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +108,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Fix issues causing warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix issues causing warnings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

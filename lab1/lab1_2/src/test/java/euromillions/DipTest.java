@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author ico0
  */
 public class DipTest {
+    private static final int RANGE_STARS = 12;
 
     private Dip instance;
 
@@ -45,4 +46,11 @@ public class DipTest {
         assertEquals("N[ 10 20 30 40 50] S[  1  2]", result, "format as string: formatted string not as expected. ");
     }
 
+    @Test
+    public void testStarRange() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Dip(new int[]{1, 2, 3, 4, 5}, new int[]{1, RANGE_STARS + 1}));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Dip(new int[]{1, 2, 3, 4, 5}, new int[]{1, 0}));
+    }
 }

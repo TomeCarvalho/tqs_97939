@@ -1,5 +1,6 @@
 package euromillions;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import sets.SetOfNaturals;
@@ -12,6 +13,11 @@ import java.util.Random;
  * @author ico0
  */
 public class Dip {
+    private static final int RANGE_NUMBERS = 50;
+    private static final int RANGE_STARS = 12;
+    private static final int N_NUMBERS = 5;
+    private static final int N_STARS = 2;
+
     private SetOfNaturals numbers;
     private SetOfNaturals starts;
 
@@ -23,12 +29,21 @@ public class Dip {
     public Dip(int[] arrayOfNumbers, int[] arrayOfStarts) {
         this();
 
-        if (5 == arrayOfNumbers.length && 2 == arrayOfStarts.length) {
+        if (N_NUMBERS == arrayOfNumbers.length && N_STARS == arrayOfStarts.length) {
             numbers.add(arrayOfNumbers);
             starts.add(arrayOfStarts);
         } else {
             throw new IllegalArgumentException("wrong number of elements in numbers/stars");
         }
+
+        // Ensure the values of the numbers and stars are valid.
+        for (int number : arrayOfNumbers)
+            if (number < 1 || number > RANGE_NUMBERS)
+                throw new IllegalArgumentException("Invalid number value.");
+
+        for (int star : arrayOfStarts)
+            if (star < 1 || star > RANGE_STARS)
+                throw new IllegalArgumentException("Invalid star value.");
 
     }
 
@@ -44,15 +59,15 @@ public class Dip {
         Random generator = new Random();
 
         Dip randomDip = new Dip();
-        for (int i = 0; i < 5; ) {
-            int candidate = generator.nextInt(49) + 1;
+        for (int i = 0; i < N_NUMBERS; ) {
+            int candidate = generator.nextInt(RANGE_NUMBERS - 1) + 1;
             if (!randomDip.getNumbersColl().contains(candidate)) {
                 randomDip.getNumbersColl().add(candidate);
                 i++;
             }
         }
-        for (int i = 0; i < 2; ) {
-            int candidate = generator.nextInt(9) + 1;
+        for (int i = 0; i < N_STARS; ) {
+            int candidate = generator.nextInt(RANGE_STARS - 1) + 1;
             if (!randomDip.getStarsColl().contains(candidate)) {
                 randomDip.getStarsColl().add(candidate);
                 i++;
