@@ -65,4 +65,10 @@ public class SetOfNaturalsTest {
         assertTrue(setB.intersects(setD));
     }
 
+    // Implementation requires the order to be the same
+//    @Test
+//    public void testEquals() {
+//        assertEquals(SetOfNaturals.fromArray(new int[]{10, 20, 30, 40, 50, 60}),
+//                SetOfNaturals.fromArray(new int[]{20, 10, 30, 40, 50, 60}));
+//    }
 }
