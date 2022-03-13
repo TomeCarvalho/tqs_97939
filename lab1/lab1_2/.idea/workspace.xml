@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="Fix issues causing warnings">
+    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="1.2b and 1.2c complete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/euromillions/Dip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/euromillions/Dip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/euromillions/DipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/euromillions/DipTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sets/SetOfNaturals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sets/SetOfNaturals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/sets/SetOfNaturalsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/sets/SetOfNaturalsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1646926559857</updated>
       <workItem from="1646926561048" duration="1196000" />
-      <workItem from="1647175985278" duration="2043000" />
+      <workItem from="1647175985278" duration="3498000" />
     </task>
     <task id="LOCAL-00001" summary="Fix issues causing warnings">
       <created>1647176439822</created>
@@ -89,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647176453137</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1.2b and 1.2c complete">
+      <created>1647178113067</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647178113067</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +116,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Fix issues causing warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix issues causing warnings" />
+    <MESSAGE value="1.2b and 1.2c complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.2b and 1.2c complete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
