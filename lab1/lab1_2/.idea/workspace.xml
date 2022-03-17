@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="1.2d: Implement SetOfNaturals#intersects and its unit test">
+    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="Add jacoco">
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/src/main/java/stocks/IStockmarketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/src/main/java/stocks/Stock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/src/main/java/stocks/StocksPortfolio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/sets/SetOfNaturalsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/sets/SetOfNaturalsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +80,8 @@
       <option name="presentableId" value="Default" />
       <updated>1646926559857</updated>
       <workItem from="1646926561048" duration="1196000" />
-      <workItem from="1647175985278" duration="4900000" />
+      <workItem from="1647175985278" duration="6449000" />
+      <workItem from="1647522721222" duration="1192000" />
     </task>
     <task id="LOCAL-00001" summary="Fix issues causing warnings">
       <created>1647176439822</created>
@@ -103,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647179670658</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add jacoco">
+      <created>1647182023962</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647182023962</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +140,8 @@
     <MESSAGE value="Fix issues causing warnings" />
     <MESSAGE value="1.2b and 1.2c complete" />
     <MESSAGE value="1.2d: Implement SetOfNaturals#intersects and its unit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.2d: Implement SetOfNaturals#intersects and its unit test" />
+    <MESSAGE value="Add jacoco" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add jacoco" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
