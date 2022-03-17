@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="stocks.StocksPortfolioTest" time="0.445" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="stocks.StocksPortfolioTest" time="0.453" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\tomec\.jdks\openjdk-17.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\tomec\AppData\Local\Temp\surefire12906459171992220136\surefirebooter2819187401350606349.jar C:\Users\tomec\AppData\Local\Temp\surefire12906459171992220136 2022-03-17T14-35-34_725-jvmRun1 surefire11372655055986359438tmp surefire_07367292063778012100tmp"/>
+    <property name="sun.java.command" value="C:\Users\tomec\AppData\Local\Temp\surefire17930303129404225148\surefirebooter2676380633208115054.jar C:\Users\tomec\AppData\Local\Temp\surefire17930303129404225148 2022-03-17T16-30-50_160-jvmRun1 surefire680981264213915828tmp surefire_07469232188429076417tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\tomec\UA\TQS\Practical\tqs_97939\lab2\lab2_1stocks\target\test-classes;C:\Users\tomec\UA\TQS\Practical\tqs_97939\lab2\lab2_1stocks\target\classes;C:\Users\tomec\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.2\junit-jupiter-5.8.2.jar;C:\Users\tomec\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\tomec\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\tomec\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\tomec\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\tomec\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.2\junit-jupiter-params-5.8.2.jar;C:\Users\tomec\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\tomec\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\tomec\.m2\repository\org\mockito\mockito-junit-jupiter\4.3.1\mockito-junit-jupiter-4.3.1.jar;C:\Users\tomec\.m2\repository\org\mockito\mockito-core\4.3.1\mockito-core-4.3.1.jar;C:\Users\tomec\.m2\repository\net\bytebuddy\byte-buddy\1.12.7\byte-buddy-1.12.7.jar;C:\Users\tomec\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.7\byte-buddy-agent-1.12.7.jar;C:\Users\tomec\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;C:\Users\tomec\.m2\repository\org\hamcrest\hamcrest-all\1.3\hamcrest-all-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\tomec\AppData\Local\Temp\surefire12906459171992220136\surefirebooter2819187401350606349.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\tomec\AppData\Local\Temp\surefire17930303129404225148\surefirebooter2676380633208115054.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.2+8-86"/>
@@ -58,5 +58,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="getTotalValueTest" classname="stocks.StocksPortfolioTest" time="0.434"/>
+  <testcase name="getTotalValueTest" classname="stocks.StocksPortfolioTest" time="0.442"/>
 </testsuite>

@@ -1,4 +1,5 @@
 package geocoding;
 
-public class ISimpleHttpClient {
+public interface ISimpleHttpClient {
+    public String doHttpGet(String url);
 }
