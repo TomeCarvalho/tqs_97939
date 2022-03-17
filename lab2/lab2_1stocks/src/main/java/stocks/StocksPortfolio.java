@@ -18,8 +18,5 @@ public class StocksPortfolio {
 
     public double getTotalValue() {
         return stocks.stream().mapToDouble(stock -> stock.getQuantity() * stockmarket.lookUpPrice(stock.getLabel())).sum();
-//        double total = 0;
-//        for (Stock stock : stocks)
-//            total += stockmarket.lookUpPrice(stock.getLabel());
     }
 }
