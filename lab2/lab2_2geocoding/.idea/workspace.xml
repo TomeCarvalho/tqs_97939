@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc5ff011-95ab-4b1e-a830-71dd59a02c7f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/geocoding/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/geocoding/AddressResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/geocoding/ConfigUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AddressResolverTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2_1stocks/src/test/java/stocks/StocksPortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_1stocks/src/test/java/stocks/StocksPortfolioTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2_1stocks/target/classes/stocks/IStockmarketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_1stocks/target/classes/stocks/IStockmarketService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2_1stocks/target/classes/stocks/StocksPortfolio.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_1stocks/target/classes/stocks/StocksPortfolio.class" afterDir="false" />
+    <list default="true" id="fc5ff011-95ab-4b1e-a830-71dd59a02c7f" name="Changes" comment="2.2 Geocoding">
       <change beforePath="$PROJECT_DIR$/../lab2_1stocks/target/surefire-reports/TEST-stocks.StocksPortfolioTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_1stocks/target/surefire-reports/TEST-stocks.StocksPortfolioTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2_1stocks/target/surefire-reports/stocks.StocksPortfolioTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_1stocks/target/surefire-reports/stocks.StocksPortfolioTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2_1stocks/target/test-classes/stocks/StocksPortfolioTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_1stocks/target/test-classes/stocks/StocksPortfolioTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/geocoding/ISimpleHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/geocoding/ISimpleHttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/geocoding/TqsBasicHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/geocoding/TqsBasicHttpClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +51,16 @@
       <workItem from="1647527508828" duration="278000" />
       <workItem from="1647527800737" duration="37000" />
       <workItem from="1647527852611" duration="5244000" />
-      <workItem from="1647533757149" duration="830000" />
+      <workItem from="1647533757149" duration="984000" />
     </task>
+    <task id="LOCAL-00001" summary="2.2 Geocoding">
+      <created>1647534663433</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647534663433</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,5 +79,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="2.2 Geocoding" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.2 Geocoding" />
   </component>
 </project>
