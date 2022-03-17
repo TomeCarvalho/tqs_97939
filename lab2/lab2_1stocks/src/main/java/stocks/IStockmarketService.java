@@ -2,6 +2,6 @@ package stocks;
 
 public class IStockmarketService {
     public double lookUpPrice(String label) {
-        return 0; // TODO: implement
+        return 0;  // Not implemented
     }
 }

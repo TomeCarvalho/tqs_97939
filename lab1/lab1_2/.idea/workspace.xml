@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="Add jacoco">
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/src/test/java/stocks/StocksPortfolioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/classes/stocks/IStockmarketService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/classes/stocks/Stock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/classes/stocks/StocksPortfolio.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/surefire-reports/TEST-stocks.StocksPortfolioTest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/surefire-reports/stocks.StocksPortfolioTest.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/target/test-classes/stocks/StocksPortfolioTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab2/lab2_1stocks/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab2/lab2_1stocks/src/main/java/stocks/StocksPortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab2/lab2_1stocks/src/main/java/stocks/StocksPortfolio.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +72,8 @@
       <updated>1646926559857</updated>
       <workItem from="1646926561048" duration="1196000" />
       <workItem from="1647175985278" duration="6449000" />
-      <workItem from="1647522721222" duration="2834000" />
+      <workItem from="1647522721222" duration="2835000" />
+      <workItem from="1647526879854" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="Fix issues causing warnings">
       <created>1647176439822</created>
