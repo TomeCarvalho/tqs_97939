@@ -1,7 +1,5 @@
 package stocks;
 
-public class IStockmarketService {
-    public double lookUpPrice(String label) {
-        return 0;  // Not implemented
-    }
+public interface IStockmarketService {
+    public double lookUpPrice(String label);
 }
