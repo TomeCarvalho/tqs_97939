@@ -1,5 +1,6 @@
 package stocks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StocksPortfolio {
@@ -8,6 +9,7 @@ public class StocksPortfolio {
 
     public StocksPortfolio(IStockmarketService stockmarket) {
         this.stockmarket = stockmarket;
+        stocks = new ArrayList<>();
     }
 
     public void addStock(Stock stock) {
@@ -15,7 +17,7 @@ public class StocksPortfolio {
     }
 
     public double getTotalValue() {
-        return stocks.stream().mapToDouble(stock -> stockmarket.lookUpPrice(stock.getLabel())).sum();
+        return stocks.stream().mapToDouble(stock -> stock.getQuantity() * stockmarket.lookUpPrice(stock.getLabel())).sum();
 //        double total = 0;
 //        for (Stock stock : stocks)
 //            total += stockmarket.lookUpPrice(stock.getLabel());
