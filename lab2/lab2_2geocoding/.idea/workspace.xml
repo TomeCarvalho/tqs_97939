@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc5ff011-95ab-4b1e-a830-71dd59a02c7f" name="Changes" comment="2.2 Geocoding">
-      <change beforePath="$PROJECT_DIR$/../lab2_1stocks/target/surefire-reports/TEST-stocks.StocksPortfolioTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_1stocks/target/surefire-reports/TEST-stocks.StocksPortfolioTest.xml" afterDir="false" />
+    <list default="true" id="fc5ff011-95ab-4b1e-a830-71dd59a02c7f" name="Changes" comment="Remove stupid error in some XML file">
+      <change afterPath="$PROJECT_DIR$/src/test/java/integration/AddressResolverIT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/geocoding/ISimpleHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/geocoding/ISimpleHttpClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/geocoding/TqsBasicHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/geocoding/TqsBasicHttpClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +42,29 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
+    <configuration name="AddressResolverIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab2_2geocoding" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="integration" />
+      <option name="MAIN_CLASS_NAME" value="integration.AddressResolverIT" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AddressResolverIT" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -51,7 +77,7 @@
       <workItem from="1647527508828" duration="278000" />
       <workItem from="1647527800737" duration="37000" />
       <workItem from="1647527852611" duration="5244000" />
-      <workItem from="1647533757149" duration="984000" />
+      <workItem from="1647533757149" duration="1959000" />
     </task>
     <task id="LOCAL-00001" summary="2.2 Geocoding">
       <created>1647534663433</created>
@@ -60,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647534663433</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Remove stupid error in some XML file">
+      <created>1647534775382</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647534775382</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="2.2 Geocoding" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.2 Geocoding" />
+    <MESSAGE value="Remove stupid error in some XML file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove stupid error in some XML file" />
   </component>
 </project>
