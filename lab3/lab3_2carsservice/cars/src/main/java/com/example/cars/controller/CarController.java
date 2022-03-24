@@ -19,9 +19,7 @@ public class CarController {
     @PostMapping("/cars")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Car> createCar(@RequestBody Car car) {
-        // return carManagerService.save(car);
         return new ResponseEntity<>(carManagerService.save(car), HttpStatus.CREATED);
-        // return ResponseEntity.of(Optional.of(carManagerService.save(car)));
     }
 
     @GetMapping("/cars")
@@ -30,7 +28,7 @@ public class CarController {
     }
 
     @GetMapping("/cars/{id}")
-    public ResponseEntity<Car> getCarById(Long carId) {
+    public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long carId) {
         return ResponseEntity.of(carManagerService.getCarDetails(carId));
     }
 

@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
 
@@ -46,7 +47,8 @@ public class CarControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(JsonUtils.toJson(mustang)))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.maker", is("Ford")));
+                .andExpect(jsonPath("$.maker", is(mustang.getMaker())))
+                .andExpect(jsonPath("$.model", is(mustang.getModel())));
         verify(service, times(1)).save(Mockito.any());
     }
 
@@ -69,8 +71,13 @@ public class CarControllerTest {
         verify(service, times(1)).getAllCars();
     }
 
-//    @Test
-//    void testGetCarById() throws Exception {
-//        Car mustang = new Car("Ford", "Mustang");
-//    }
+    @Test
+    void testGetCarById() throws Exception {
+        Car mustang = new Car("Ford", "Mustang");
+        when(service.getCarDetails(mustang.getCarId())).thenReturn(Optional.of(mustang));
+        mvc.perform(get("/api/cars/" + mustang.getCarId()).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.maker", is(mustang.getMaker())))
+                .andExpect(jsonPath("$.model", is(mustang.getModel())));
+        verify(service, times(1)).getCarDetails(mustang.getCarId());
+    }
 }
