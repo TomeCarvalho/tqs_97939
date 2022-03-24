@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc5ff011-95ab-4b1e-a830-71dd59a02c7f" name="Changes" comment="Remove stupid error in some XML file">
-      <change afterPath="$PROJECT_DIR$/src/test/java/integration/AddressResolverIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/geocoding/ISimpleHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/geocoding/ISimpleHttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/geocoding/TqsBasicHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/geocoding/TqsBasicHttpClient.java" afterDir="false" />
-    </list>
+    <list default="true" id="fc5ff011-95ab-4b1e-a830-71dd59a02c7f" name="Changes" comment="2.3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +37,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install failsafe:integration-test" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="AddressResolverIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -77,7 +76,7 @@
       <workItem from="1647527508828" duration="278000" />
       <workItem from="1647527800737" duration="37000" />
       <workItem from="1647527852611" duration="5244000" />
-      <workItem from="1647533757149" duration="1959000" />
+      <workItem from="1647533757149" duration="2190000" />
     </task>
     <task id="LOCAL-00001" summary="2.2 Geocoding">
       <created>1647534663433</created>
@@ -93,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647534775382</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2.3">
+      <created>1647535957237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647535957237</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +120,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="2.2 Geocoding" />
     <MESSAGE value="Remove stupid error in some XML file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove stupid error in some XML file" />
+    <MESSAGE value="2.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.3" />
   </component>
 </project>
