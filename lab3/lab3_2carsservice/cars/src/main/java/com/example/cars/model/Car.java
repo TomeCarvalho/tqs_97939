@@ -16,7 +16,7 @@ import java.util.Objects;
 @Setter
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "carId")
     private long carId;
 

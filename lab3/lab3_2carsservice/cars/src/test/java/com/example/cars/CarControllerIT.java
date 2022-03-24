@@ -14,11 +14,13 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase
+// @AutoConfigureTestDatabase
+@TestPropertySource(locations = "application-integrationtest.properties")
 public class CarControllerIT {
     @LocalServerPort
     int randomServerPort;
