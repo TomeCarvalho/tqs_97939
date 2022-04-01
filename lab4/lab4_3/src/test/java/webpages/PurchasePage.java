@@ -74,7 +74,7 @@ public class PurchasePage {
 
     public void selectCardType() {
         Select select = new Select(cardType);
-        select.selectByValue("Visa");
+        select.selectByIndex(1);
     }
 
     public void enterCardNumber() {

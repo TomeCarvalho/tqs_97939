@@ -16,7 +16,7 @@ public class ReservePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "tr:nth-child(0) .btn")
+    @FindBy(css = "tr:nth-child(3) .btn")
     private WebElement chooseFlightButton;
 
     public void clickChooseFlight() {
