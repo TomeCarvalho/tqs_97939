@@ -12,6 +12,7 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.LocalDate;
 
 @Service
 public class CovidService {
@@ -29,12 +30,7 @@ public class CovidService {
             if (search != null)
                 uriBuilder.addParameter("search", search);
             URI uri = uriBuilder.build();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(uri)
-                    .header("X-RapidAPI-Host", host)
-                    .header("X-RapidAPI-Key", key)
-                    .method("GET", HttpRequest.BodyPublishers.noBody())
-                    .build();
+            HttpRequest request = createRapidApiGet(uri);
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
             return new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
         } catch (IOException | InterruptedException | URISyntaxException e) {
@@ -49,17 +45,37 @@ public class CovidService {
             if (country != null)
                 uriBuilder.addParameter("country", country);
             URI uri = uriBuilder.build();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(uri)
-                    .header("X-RapidAPI-Host", host)
-                    .header("X-RapidAPI-Key", key)
-                    .method("GET", HttpRequest.BodyPublishers.noBody())
-                    .build();
+            HttpRequest request = createRapidApiGet(uri);
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
             return new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
         } catch (IOException | InterruptedException | URISyntaxException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public ResponseEntity<String> getHistory(@RequestParam String country, @RequestParam(required = false) LocalDate day) {
+        try {
+            URIBuilder uriBuilder = new URIBuilder(url + "/history");
+            uriBuilder.addParameter("country", country);
+            if (day != null)
+                uriBuilder.addParameter("day", day.toString());
+            URI uri = uriBuilder.build();
+            HttpRequest request = createRapidApiGet(uri);
+            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            return new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+        } catch (IOException | InterruptedException | URISyntaxException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private HttpRequest createRapidApiGet(URI uri) {
+        return HttpRequest.newBuilder()
+                .uri(uri)
+                .header("X-RapidAPI-Host", host)
+                .header("X-RapidAPI-Key", key)
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
     }
 }

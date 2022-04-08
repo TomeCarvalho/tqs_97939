@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import tqs.n97939.covid.service.CovidService;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("/api")
 public class Controller {
@@ -22,5 +24,10 @@ public class Controller {
     @GetMapping("/statistics")
     public ResponseEntity<String> getCurrentStatistics(@RequestParam(required = false) String country) {
         return service.getCurrentStatistics(country);
+    }
+
+    @GetMapping("/history")
+    public ResponseEntity<String> getHistory(@RequestParam String country, @RequestParam(required = false) LocalDate day) {
+        return service.getHistory(country, day);
     }
 }
