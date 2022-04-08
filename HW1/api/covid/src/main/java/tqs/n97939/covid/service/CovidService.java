@@ -54,12 +54,12 @@ public class CovidService {
         }
     }
 
-    public ResponseEntity<String> getHistory(@RequestParam String country, @RequestParam(required = false) LocalDate day) {
+    public ResponseEntity<String> getHistory(@RequestParam String country, @RequestParam(required = false) String day) {
         try {
             URIBuilder uriBuilder = new URIBuilder(url + "/history");
             uriBuilder.addParameter("country", country);
             if (day != null)
-                uriBuilder.addParameter("day", day.toString());
+                uriBuilder.addParameter("day", day);
             URI uri = uriBuilder.build();
             HttpRequest request = createRapidApiGet(uri);
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
