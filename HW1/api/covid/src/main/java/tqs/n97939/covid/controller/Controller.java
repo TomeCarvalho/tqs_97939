@@ -3,6 +3,7 @@ package tqs.n97939.covid.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,10 @@ public class Controller {
     public ResponseEntity<String> getHistory(@RequestParam String country, @RequestParam(required = false) String day) {
         logger.info("GET /history - country = " + country + ", day = " + day);
         return service.getHistory(country, day);
+    }
+
+    @GetMapping("/cache-stats")
+    public ResponseEntity<String> getCacheStats() {
+        return service.getCacheStats();
     }
 }

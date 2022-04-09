@@ -56,8 +56,12 @@ public class RequestCache {
         logger.info("Cache - removed - request: " + key);
     }
 
-    public int hitRatio() {
-        return hitCount / (hitCount + missCount);
+    public double hitRatio() {
+        return ((double) hitCount) / (hitCount + missCount);
+    }
+
+    public int size() {
+        return cache.size();
     }
 
     public int getHitCount() {
@@ -66,6 +70,10 @@ public class RequestCache {
 
     public int getMissCount() {
         return missCount;
+    }
+
+    public long getTtl() {
+        return ttl;
     }
 
     class CleanerThread extends Thread {

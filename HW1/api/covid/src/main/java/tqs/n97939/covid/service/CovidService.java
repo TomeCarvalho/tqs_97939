@@ -128,4 +128,16 @@ public class CovidService {
         logger.info("Created HTTP Request: " + ret);
         return ret;
     }
+
+    public ResponseEntity<String> getCacheStats() {
+        return new ResponseEntity<>(String.format("{\n" +
+                "    \"ttl\": %d,\n" +
+                "    \"stats\": {\n" +
+                "        \"hits\": %d,\n" +
+                "        \"misses\": %d,\n" +
+                "        \"hit_ratio\": %f,\n" +
+                "        \"size\": %d\n" +
+                "    }\n" +
+                "}", cache.getTtl(), cache.getHitCount(), cache.getMissCount(), cache.hitRatio(), cache.size()), HttpStatus.OK);
+    }
 }
