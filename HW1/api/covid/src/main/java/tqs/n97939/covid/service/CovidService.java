@@ -1,10 +1,13 @@
 package tqs.n97939.covid.service;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
+import tqs.n97939.covid.cache.RequestCache;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,11 +15,12 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.LocalDate;
 
 @Service
 public class CovidService {
     // @Value("${X-RapidAPI-Host}")
+    private final Logger logger = LoggerFactory.getLogger(CovidService.class);
+
     private final String host = "covid-193.p.rapidapi.com";
 
     // @Value("${X-RapidAPI-Key}")
@@ -24,31 +28,61 @@ public class CovidService {
 
     private final String url = "https://" + host;
 
+    private RequestCache cache = new RequestCache(16, 10);
+
     public ResponseEntity<String> getCountries(@RequestParam(required = false) String search) {
+        logger.info("getCountries called.");
         try {
             URIBuilder uriBuilder = new URIBuilder(url + "/countries");
             if (search != null)
                 uriBuilder.addParameter("search", search);
             URI uri = uriBuilder.build();
+            logger.info("Built URI: " + uri);
             HttpRequest request = createRapidApiGet(uri);
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            return new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+            HttpResponse<String> response;
+            logger.info("Checking cache.");
+            ResponseEntity<String> cacheRes = cache.get(request);
+            if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
+                logger.info("Request not found in cache. Sending request to API.");
+                response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+                ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+                cache.put(request, responseEntity);
+                logger.info("Request-Response cached.");
+                return responseEntity;
+            }
+            logger.info("Found in cache.");
+            return cacheRes;
         } catch (IOException | InterruptedException | URISyntaxException e) {
+            logger.error("Caught exception\n" + e);
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     public ResponseEntity<String> getCurrentStatistics(@RequestParam(required = false) String country) {
+        logger.info("getCurrentStatistics called.");
         try {
             URIBuilder uriBuilder = new URIBuilder(url + "/statistics");
             if (country != null)
                 uriBuilder.addParameter("country", country);
             URI uri = uriBuilder.build();
+            logger.info("Built URI: " + uri);
             HttpRequest request = createRapidApiGet(uri);
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            return new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+            HttpResponse<String> response;
+            logger.info("Checking cache.");
+            ResponseEntity<String> cacheRes = cache.get(request);
+            if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
+                logger.info("Request not found in cache. Sending request to API.");
+                response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+                ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+                cache.put(request, responseEntity);
+                logger.info("Request-Response cached.");
+                return responseEntity;
+            }
+            logger.info("Found in cache.");
+            return cacheRes;
         } catch (IOException | InterruptedException | URISyntaxException e) {
+            logger.error("Caught exception\n" + e);
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -61,21 +95,37 @@ public class CovidService {
             if (day != null)
                 uriBuilder.addParameter("day", day);
             URI uri = uriBuilder.build();
+            logger.info("Built URI: " + uri);
             HttpRequest request = createRapidApiGet(uri);
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            return new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+            HttpResponse<String> response;
+            logger.info("Checking cache.");
+            ResponseEntity<String> cacheRes = cache.get(request);
+            if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
+                logger.info("Request not found in cache. Sending request to API.");
+                response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+                ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+                cache.put(request, responseEntity);
+                logger.info("Request-Response cached.");
+                return responseEntity;
+            }
+            logger.info("Found in cache.");
+            return cacheRes;
         } catch (IOException | InterruptedException | URISyntaxException e) {
+            logger.error("Caught exception\n" + e);
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     private HttpRequest createRapidApiGet(URI uri) {
-        return HttpRequest.newBuilder()
+        logger.info("createRapidApiGet called.");
+        HttpRequest ret = HttpRequest.newBuilder()
                 .uri(uri)
                 .header("X-RapidAPI-Host", host)
                 .header("X-RapidAPI-Key", key)
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
+        logger.info("Created HTTP Request: " + ret);
+        return ret;
     }
 }
