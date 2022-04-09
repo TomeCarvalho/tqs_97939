@@ -37,18 +37,20 @@ function App() {
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
-        document.title = `COVID-19 Statistics: ${selCountry}`
-        setCountryInfo(undefined);
-        fetch(`${apiUrl}/history?country=${selCountry}&day=${date.toISOString().substring(0, 10)}`, {
-            headers: {Accept: "application/json", "Content-Type": "application/json"}
-        })
-            .then(response => response.json())
-            .then(data => {
-                setCountryInfo(data.response);
+        if (selCountry !== undefined && date !== undefined) {
+            document.title = `COVID-19 Statistics: ${selCountry}`
+            setCountryInfo(undefined);
+            fetch(`${apiUrl}/history?country=${selCountry}&day=${date.toISOString().substring(0, 10)}`, {
+                headers: {Accept: "application/json", "Content-Type": "application/json"}
             })
-            .catch(err => {
-                console.log(err);
-            })
+                .then(response => response.json())
+                .then(data => {
+                    setCountryInfo(data.response);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
     }, [selCountry, date])
 
     useEffect(() => {
