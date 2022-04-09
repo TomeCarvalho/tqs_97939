@@ -2,8 +2,7 @@ import "./App.css";
 import {
     Alert,
     AppBar, Autocomplete,
-    Box, Grid,
-    TextField,
+    Box, CircularProgress, Grid, TextField,
     Toolbar,
     Typography,
     useMediaQuery
@@ -12,15 +11,14 @@ import * as React from "react";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import {useEffect, useState} from "react";
-import Stack from '@mui/material/Stack';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import TimePicker from '@mui/lab/TimePicker';
-import DateTimePicker from '@mui/lab/DateTimePicker';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import CountryInfo from "./components/CountryInfo";
 
 function App() {
+    const apiUrl = 'http://localhost:8080/api'
+
     const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
     const theme = React.useMemo(
@@ -38,13 +36,10 @@ function App() {
     const [countryInfo, setCountryInfo] = useState([]);
     const [date, setDate] = useState(new Date());
 
-    // useEffect(() => {
-    //     console.log("countryInfo", countryInfo);
-    // }, [countryInfo])
-
     useEffect(() => {
-        console.log("selCountry:", selCountry)
-        fetch(`http://localhost:8080/api/history?country=${selCountry}&date=${date}`, {
+        document.title = `COVID-19 Statistics: ${selCountry}`
+        setCountryInfo(undefined);
+        fetch(`${apiUrl}/history?country=${selCountry}&day=${date.toISOString().substring(0, 10)}`, {
             headers: {Accept: "application/json", "Content-Type": "application/json"}
         })
             .then(response => response.json())
@@ -54,10 +49,11 @@ function App() {
             .catch(err => {
                 console.log(err);
             })
-    }, [selCountry])
+    }, [selCountry, date])
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/countries", {
+        document.title = "COVID-19 Statistics"
+        fetch(`${apiUrl}/countries`, {
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'}
         })
             .then(response => response.json())
@@ -90,34 +86,48 @@ function App() {
                     </Toolbar>
                 </AppBar>
             </Box>
-            <Autocomplete
-                disablePortal
-                id="autocomplete-countries"
-                options={countries}
-                renderInput={(params) => <TextField {...params} label="Country/Region"/>}
-                onChange={onChangeCountry}
-                sx={{m: 2}}
-            />
-            <Box sx={{m: 2}}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <MobileDatePicker
-                        label="Date"
-                        inputFormat="dd/MM/yyyy"
-                        value={date}
-                        onChange={onChangeDate}
-                        renderInput={(params) => <TextField {...params} />}
-                        disableFuture={true}
+            <Grid container>
+                <Grid item xs={6}>
+                    <Autocomplete
+                        disablePortal
+                        id="autocomplete-countries"
+                        options={countries}
+                        renderInput={(params) => <TextField {...params} label="Country/Region"/>}
+                        onChange={onChangeCountry}
                         sx={{m: 2}}
                     />
-                </LocalizationProvider>
-            </Box>
+                </Grid>
+                <Grid item xs={6}>
+                    <Box sx={{m: 2}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <MobileDatePicker
+                                label="Date"
+                                inputFormat="dd/MM/yyyy"
+                                value={date}
+                                onChange={onChangeDate}
+                                renderInput={(params) => <TextField {...params} />}
+                                disableFuture={true}
+                                sx={{m: 2}}
+                            />
+                        </LocalizationProvider>
+                    </Box>
+                </Grid>
+            </Grid>
 
-
-            {(countryInfo.length)
+            {(countryInfo !== undefined && countryInfo.length)
                 ?
-                <p>Estudaste</p>
+                <CountryInfo info={countryInfo[0]}/>
                 :
-                <Alert variant="outlined" severity="info" sx={{m: 2}}>No region selected.</Alert>
+                <>
+                    {(selCountry === undefined)
+                        ?
+                        <Alert variant="outlined" severity="info" sx={{m: 2}}>No region selected.</Alert>
+                        :
+                        <Grid container justifyContent="center">
+                            <CircularProgress/>
+                        </Grid>
+                    }
+                </>
             }
         </ThemeProvider>
     );
