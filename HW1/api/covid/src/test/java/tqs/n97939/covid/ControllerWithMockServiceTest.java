@@ -13,10 +13,10 @@ import tqs.n97939.covid.service.CovidService;
 
 import java.util.Objects;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @WebMvcTest(Controller.class)
@@ -624,6 +624,20 @@ public class ControllerWithMockServiceTest {
             HttpStatus.OK
     );
 
+    private static final ResponseEntity<String> CACHE_STATS_RE = new ResponseEntity<>(
+            "{\n" +
+                    "    \"ttl\": 10000,\n" +
+                    "    \"stats\": {\n" +
+                    "        \"count\": 7,\n" +
+                    "        \"hits\": 0,\n" +
+                    "        \"misses\": 7,\n" +
+                    "        \"hit_ratio\": 0.000000,\n" +
+                    "        \"size\": 0\n" +
+                    "    }\n" +
+                    "}",
+            HttpStatus.OK
+    );
+
     @Test
     void testGetCountries() throws Exception {
         when(service.getCountries(null)).thenReturn(COUNTRIES_RE);
@@ -659,5 +673,14 @@ public class ControllerWithMockServiceTest {
                 .andExpect(content().string(Objects.requireNonNull(HISTORY_DP_DAY_RE.getBody())));
         verify(service, times(1)).getHistory("diamond-princess", null);
         verify(service, times(1)).getHistory("diamond-princess", "2020-04-14");
+    }
+
+    @Test
+    void testGetCacheStats() throws Exception {
+        when(service.getCacheStats()).thenReturn(CACHE_STATS_RE);
+        mvc.perform(get("/api/cache-stats").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(Objects.requireNonNull(CACHE_STATS_RE.getBody())));
+        verify(service, times(1)).getCacheStats();
     }
 }
