@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="Add jacoco">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../HW1/api/covid/src/test/java/tqs/n97939/covid/RequestCacheTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HW1/api/covid/covid.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW1/api/covid/covid.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HW1/api/covid/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW1/api/covid/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1_1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1_1/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lab2/lab2_1stocks" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -74,6 +78,7 @@
       <workItem from="1647175985278" duration="6449000" />
       <workItem from="1647522721222" duration="2835000" />
       <workItem from="1647526879854" duration="7000" />
+      <workItem from="1649703533258" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="Fix issues causing warnings">
       <created>1647176439822</created>
