@@ -1,5 +1,6 @@
 package com.example.cars.controller;
 
+import com.example.cars.dto.CarDto;
 import com.example.cars.model.Car;
 import com.example.cars.service.CarManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class CarController {
 
     @PostMapping("/cars")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Car> createCar(@RequestBody Car car) {
-        return new ResponseEntity<>(carManagerService.save(car), HttpStatus.CREATED);
+    public ResponseEntity<Car> createCar(@RequestBody CarDto carDto) {
+        return new ResponseEntity<>(carManagerService.save(new Car(carDto)), HttpStatus.CREATED);
     }
 
     @GetMapping("/cars")

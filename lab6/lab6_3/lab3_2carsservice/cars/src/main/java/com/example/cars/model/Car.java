@@ -1,5 +1,6 @@
 package com.example.cars.model;
 
+import com.example.cars.dto.CarDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,6 +30,10 @@ public class Car {
     public Car(String maker, String model) {
         this.maker = maker;
         this.model = model;
+    }
+
+    public Car(CarDto carDto) {
+        this(carDto.getMaker(), carDto.getModel());
     }
 
     @Override
