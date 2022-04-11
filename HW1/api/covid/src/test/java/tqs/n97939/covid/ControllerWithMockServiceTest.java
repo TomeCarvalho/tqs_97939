@@ -293,7 +293,7 @@ public class ControllerWithMockServiceTest {
     );
 
 
-    private static final ResponseEntity<String> STATS_USA = new ResponseEntity<>(
+    private static final ResponseEntity<String> STATS_USA_RE = new ResponseEntity<>(
             "{\n" +
                     "    \"get\": \"statistics\",\n" +
                     "    \"parameters\": {\n" +
@@ -331,20 +331,333 @@ public class ControllerWithMockServiceTest {
             HttpStatus.OK
     );
 
+    private static final ResponseEntity<String> HISTORY_DP_RE = new ResponseEntity<>(
+            "{\n" +
+                    "    \"get\": \"history\",\n" +
+                    "    \"parameters\": {\n" +
+                    "        \"country\": \"diamond-princess\"\n" +
+                    "    },\n" +
+                    "    \"errors\": [],\n" +
+                    "    \"results\": 10,\n" +
+                    "    \"response\": [\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 0,\n" +
+                    "                \"critical\": null,\n" +
+                    "                \"recovered\": 699,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 13\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2022-04-11\",\n" +
+                    "            \"time\": \"2022-04-11T20:45:04+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 40,\n" +
+                    "                \"critical\": 4,\n" +
+                    "                \"recovered\": 659,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 13\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-12-03\",\n" +
+                    "            \"time\": \"2020-12-03T22:00:13+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 48,\n" +
+                    "                \"critical\": 4,\n" +
+                    "                \"recovered\": 651,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 13\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-10-10\",\n" +
+                    "            \"time\": \"2020-10-10T05:00:07+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 48,\n" +
+                    "                \"critical\": 4,\n" +
+                    "                \"recovered\": 651,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 13\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-05-29\",\n" +
+                    "            \"time\": \"2020-05-29T17:45:07+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 48,\n" +
+                    "                \"critical\": 4,\n" +
+                    "                \"recovered\": 651,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 13\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-05-29\",\n" +
+                    "            \"time\": \"2020-05-29T00:15:06+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 54,\n" +
+                    "                \"critical\": 4,\n" +
+                    "                \"recovered\": 645,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 13\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-05-10\",\n" +
+                    "            \"time\": \"2020-05-10T23:00:05+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 55,\n" +
+                    "                \"critical\": 7,\n" +
+                    "                \"recovered\": 644,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 13\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-04-23\",\n" +
+                    "            \"time\": \"2020-04-23T00:15:05+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 56,\n" +
+                    "                \"critical\": 7,\n" +
+                    "                \"recovered\": 644,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 12\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-04-17\",\n" +
+                    "            \"time\": \"2020-04-17T05:15:05+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 61,\n" +
+                    "                \"critical\": 7,\n" +
+                    "                \"recovered\": 639,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 12\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-04-16\",\n" +
+                    "            \"time\": \"2020-04-16T02:15:05+00:00\"\n" +
+                    "        },\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 82,\n" +
+                    "                \"critical\": 10,\n" +
+                    "                \"recovered\": 619,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 11\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-04-14\",\n" +
+                    "            \"time\": \"2020-04-14T00:30:11+00:00\"\n" +
+                    "        }\n" +
+                    "    ]\n" +
+                    "}",
+            HttpStatus.OK
+    );
+
+    private static final ResponseEntity<String> HISTORY_DP_DAY_RE = new ResponseEntity<>(
+            "{\n" +
+                    "    \"get\": \"history\",\n" +
+                    "    \"parameters\": {\n" +
+                    "        \"country\": \"diamond-princess\",\n" +
+                    "        \"day\": \"2020-04-14\"\n" +
+                    "    },\n" +
+                    "    \"errors\": [],\n" +
+                    "    \"results\": 1,\n" +
+                    "    \"response\": [\n" +
+                    "        {\n" +
+                    "            \"continent\": null,\n" +
+                    "            \"country\": \"Diamond-Princess\",\n" +
+                    "            \"population\": null,\n" +
+                    "            \"cases\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"active\": 82,\n" +
+                    "                \"critical\": 10,\n" +
+                    "                \"recovered\": 619,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 712\n" +
+                    "            },\n" +
+                    "            \"deaths\": {\n" +
+                    "                \"new\": null,\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": 11\n" +
+                    "            },\n" +
+                    "            \"tests\": {\n" +
+                    "                \"1M_pop\": null,\n" +
+                    "                \"total\": null\n" +
+                    "            },\n" +
+                    "            \"day\": \"2020-04-14\",\n" +
+                    "            \"time\": \"2020-04-14T00:30:11+00:00\"\n" +
+                    "        }\n" +
+                    "    ]\n" +
+                    "}",
+            HttpStatus.OK
+    );
+
     @Test
     void testGetCountries() throws Exception {
         when(service.getCountries(null)).thenReturn(COUNTRIES_RE);
         when(service.getCountries("stan")).thenReturn(COUNTRIES_STAN);
-
         mvc.perform(get("/api/countries").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(Objects.requireNonNull(COUNTRIES_RE.getBody())));
-
         mvc.perform(get("/api/countries?search=stan").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(Objects.requireNonNull(COUNTRIES_STAN.getBody())));
-
         verify(service, times(1)).getCountries(null);
         verify(service, times(1)).getCountries("stan");
+    }
+
+    @Test
+    void testGetCurrentStatistics() throws Exception {
+        when(service.getCurrentStatistics("usa")).thenReturn(STATS_USA_RE);
+        mvc.perform(get("/api/statistics?country=usa").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(Objects.requireNonNull(STATS_USA_RE.getBody())));
+        verify(service, times(1)).getCurrentStatistics("usa");
+    }
+
+    @Test
+    void testGetHistory() throws Exception {
+        when(service.getHistory("diamond-princess", null)).thenReturn(HISTORY_DP_RE);
+        when(service.getHistory("diamond-princess", "2020-04-14")).thenReturn(HISTORY_DP_DAY_RE);
+        mvc.perform(get("/api/history?country=diamond-princess").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(Objects.requireNonNull(HISTORY_DP_RE.getBody())));
+        mvc.perform(get("/api/history?country=diamond-princess&day=2020-04-14").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(Objects.requireNonNull(HISTORY_DP_DAY_RE.getBody())));
+        verify(service, times(1)).getHistory("diamond-princess", null);
+        verify(service, times(1)).getHistory("diamond-princess", "2020-04-14");
     }
 }
