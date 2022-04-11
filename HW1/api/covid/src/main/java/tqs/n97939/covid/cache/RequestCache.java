@@ -72,6 +72,10 @@ public class RequestCache {
         return missCount;
     }
 
+    public int getCount() {
+        return hitCount + missCount;
+    }
+
     public long getTtl() {
         return ttl;
     }

@@ -133,11 +133,12 @@ public class CovidService {
         return new ResponseEntity<>(String.format("{\n" +
                 "    \"ttl\": %d,\n" +
                 "    \"stats\": {\n" +
+                "        \"count\": %d,\n" +
                 "        \"hits\": %d,\n" +
                 "        \"misses\": %d,\n" +
                 "        \"hit_ratio\": %f,\n" +
                 "        \"size\": %d\n" +
                 "    }\n" +
-                "}", cache.getTtl(), cache.getHitCount(), cache.getMissCount(), cache.hitRatio(), cache.size()), HttpStatus.OK);
+                "}", cache.getTtl(), cache.getCount(), cache.getHitCount(), cache.getMissCount(), cache.hitRatio(), cache.size()), HttpStatus.OK);
     }
 }
