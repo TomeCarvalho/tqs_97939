@@ -6,15 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.net.http.HttpRequest;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class RequestCache {
     private final Logger logger = LoggerFactory.getLogger(RequestCache.class);
-    private Map<HttpRequest, ResponseEntity<String>> cache;
-    private Map<HttpRequest, Long> timeMap;
+    private final Map<HttpRequest, ResponseEntity<String>> cache;
+    private final Map<HttpRequest, Long> timeMap;
     private final long ttl; // in ms
     private int hitCount;
     private int missCount;

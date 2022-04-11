@@ -28,7 +28,7 @@ public class CovidService {
 
     private final String url = "https://" + host;
 
-    private RequestCache cache = new RequestCache(10000);
+    private final RequestCache cache = new RequestCache(10000);
 
     public ResponseEntity<String> getCountries(@RequestParam(required = false) String search) {
         logger.info("getCountries called.");
