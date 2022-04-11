@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="Add jacoco">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7a3faf50-0e35-413e-bfef-105c0008b864" name="Changes" comment="Add jacoco" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,6 +31,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -41,6 +41,12 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tomec\UA\TQS\Practical\tqs_97939\lab1\lab1_2" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean verify sonar:sonar \   -Dsonar.projectKey=lab6_2 \   -Dsonar.host.url=http://127.0.0.1:9000 \   -Dsonar.login=3312acc3820461e408a4c8d7bd24f3916ede9be1" />
+      <command value="mvn clean verify sonar:sonar  -Dsonar.projectKey=lab6_2 -Dsonar.host.url=http://127.0.0.1:9000   -Dsonar.login=3312acc3820461e408a4c8d7bd24f3916ede9be1" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="DemoMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -74,6 +80,8 @@
       <workItem from="1647175985278" duration="6449000" />
       <workItem from="1647522721222" duration="2835000" />
       <workItem from="1647526879854" duration="7000" />
+      <workItem from="1649682960031" duration="887000" />
+      <workItem from="1649685662786" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="Fix issues causing warnings">
       <created>1647176439822</created>
