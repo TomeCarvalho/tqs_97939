@@ -23,9 +23,6 @@ public class CovidService {
 
     private final String host = "covid-193.p.rapidapi.com";
 
-    // @Value("${X-RapidAPI-Key}")
-    private final String key = "2b40038946msh38761268e33a7fbp1c4bfejsn17b9b063c6b4";
-
     private final String url = "https://" + host;
 
     private final RequestCache cache = new RequestCache(10000);
@@ -119,6 +116,8 @@ public class CovidService {
 
     private HttpRequest createRapidApiGet(URI uri) {
         logger.info("createRapidApiGet called.");
+        // @Value("${X-RapidAPI-Key}")
+        String key = "2b40038946msh38761268e33a7fbp1c4bfejsn17b9b063c6b4";
         HttpRequest ret = HttpRequest.newBuilder()
                 .uri(uri)
                 .header("X-RapidAPI-Host", host)
