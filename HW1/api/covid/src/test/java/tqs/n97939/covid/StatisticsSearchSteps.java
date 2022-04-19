@@ -15,6 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -33,7 +34,7 @@ public class StatisticsSearchSteps {
     public void open_firefox_navigate_to_app() {
         driver = new FirefoxDriver();
         js = (JavascriptExecutor) driver;
-        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
         vars = new HashMap<String, Object>();
         driver.get("http://localhost:3000/");
         driver.manage().window().setSize(new Dimension(810, 824));
@@ -51,10 +52,9 @@ public class StatisticsSearchSteps {
     }
 
 
-    @When("the user searches for statistics for the country {string} on the date {iso8601Date}")
-    public void theUserSearchesForStatisticsForTheCountryOnTheDate(String country, LocalDateTime date) {
-        driver.findElement(By.id("autocomplete-countries-option-0")).click();
-        driver.findElement(By.id("autocomplete-countries")).sendKeys(country);
+    @When("the user searches for statistics for the country USA on the date 2021-06-17")
+    public void theUserSearchesForStatisticsForTheCountryOnTheDate() {
+        driver.findElement(By.id("autocomplete-countries-option-222")).click();
         driver.findElement(By.id(":r5:")).click();
         driver.findElement(By.cssSelector(".css-fd2y78-MuiSvgIcon-root")).click();
         driver.findElement(By.cssSelector(".PrivatePickersYear-root:nth-child(122) > .PrivatePickersYear-yearButton")).click();

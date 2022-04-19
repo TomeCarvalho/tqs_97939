@@ -50,8 +50,7 @@ public class USAStatistics20210617Test {
             Actions builder = new Actions(driver);
             builder.moveToElement(element, 0, 0).perform();
         }
-        driver.findElement(By.id("autocomplete-countries-option-0")).click();
-        driver.findElement(By.id("autocomplete-countries")).sendKeys("USA");
+        driver.findElement(By.id("autocomplete-countries-option-222")).click();
         driver.findElement(By.id(":r5:")).click();
         driver.findElement(By.cssSelector(".css-fd2y78-MuiSvgIcon-root")).click();
         driver.findElement(By.cssSelector(".PrivatePickersYear-root:nth-child(122) > .PrivatePickersYear-yearButton")).click();
