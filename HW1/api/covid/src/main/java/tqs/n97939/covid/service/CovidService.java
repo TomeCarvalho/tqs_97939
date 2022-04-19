@@ -18,7 +18,6 @@ import java.net.http.HttpResponse;
 
 @Service
 public class CovidService {
-    // @Value("${X-RapidAPI-Host}")
     private final Logger logger = LoggerFactory.getLogger(CovidService.class);
 
     private final String host = "covid-193.p.rapidapi.com";
@@ -33,22 +32,7 @@ public class CovidService {
             URIBuilder uriBuilder = new URIBuilder(url + "/countries");
             if (search != null)
                 uriBuilder.addParameter("search", search);
-            URI uri = uriBuilder.build();
-            logger.info("Built URI: " + uri);
-            HttpRequest request = createRapidApiGet(uri);
-            HttpResponse<String> response;
-            logger.info("Checking cache for request " + request);
-            ResponseEntity<String> cacheRes = cache.get(request);
-            if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
-                logger.info("Not found in cache: request " + request + ". Sending request to API.");
-                response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-                ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
-                cache.put(request, responseEntity);
-                logger.info("Response cached for request: " + request);
-                return responseEntity;
-            }
-            logger.info("Found in cache: request " + request);
-            return cacheRes;
+            return getStringResponseEntity(uriBuilder);
         } catch (IOException | InterruptedException | URISyntaxException e) {
             logger.error("Caught exception\n" + e);
             e.printStackTrace();
@@ -62,22 +46,7 @@ public class CovidService {
             URIBuilder uriBuilder = new URIBuilder(url + "/statistics");
             if (country != null)
                 uriBuilder.addParameter("country", country);
-            URI uri = uriBuilder.build();
-            logger.info("Built URI: " + uri);
-            HttpRequest request = createRapidApiGet(uri);
-            HttpResponse<String> response;
-            logger.info("Checking cache for request " + request);
-            ResponseEntity<String> cacheRes = cache.get(request);
-            if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
-                logger.info("Not found in cache: request " + request + ". Sending request to API.");
-                response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-                ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
-                cache.put(request, responseEntity);
-                logger.info("Response cached for request: " + request);
-                return responseEntity;
-            }
-            logger.info("Found in cache: request " + request);
-            return cacheRes;
+            return getStringResponseEntity(uriBuilder);
         } catch (IOException | InterruptedException | URISyntaxException e) {
             logger.error("Caught exception\n" + e);
             e.printStackTrace();
@@ -91,22 +60,7 @@ public class CovidService {
             uriBuilder.addParameter("country", country);
             if (day != null)
                 uriBuilder.addParameter("day", day);
-            URI uri = uriBuilder.build();
-            logger.info("Built URI: " + uri);
-            HttpRequest request = createRapidApiGet(uri);
-            HttpResponse<String> response;
-            logger.info("Checking cache for request " + request);
-            ResponseEntity<String> cacheRes = cache.get(request);
-            if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
-                logger.info("Not found in cache: request " + request + ". Sending request to API.");
-                response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-                ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
-                cache.put(request, responseEntity);
-                logger.info("Response cached for request: " + request);
-                return responseEntity;
-            }
-            logger.info("Found in cache: request " + request);
-            return cacheRes;
+            return getStringResponseEntity(uriBuilder);
         } catch (IOException | InterruptedException | URISyntaxException e) {
             logger.error("Caught exception\n" + e);
             e.printStackTrace();
@@ -114,9 +68,27 @@ public class CovidService {
         }
     }
 
+    private ResponseEntity<String> getStringResponseEntity(URIBuilder uriBuilder) throws URISyntaxException, IOException, InterruptedException {
+        URI uri = uriBuilder.build();
+        logger.info("Built URI: " + uri);
+        HttpRequest request = createRapidApiGet(uri);
+        HttpResponse<String> response;
+        logger.info("Checking cache for request " + request);
+        ResponseEntity<String> cacheRes = cache.get(request);
+        if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
+            logger.info("Not found in cache: request " + request + ". Sending request to API.");
+            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
+            cache.put(request, responseEntity);
+            logger.info("Response cached for request: " + request);
+            return responseEntity;
+        }
+        logger.info("Found in cache: request " + request);
+        return cacheRes;
+    }
+
     private HttpRequest createRapidApiGet(URI uri) {
         logger.info("createRapidApiGet called.");
-        // @Value("${X-RapidAPI-Key}")
         String key = "2b40038946msh38761268e33a7fbp1c4bfejsn17b9b063c6b4";
         HttpRequest ret = HttpRequest.newBuilder()
                 .uri(uri)

@@ -6,24 +6,23 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class StatisticsSearchSteps {
     private FirefoxDriver driver;
+    private WebDriverWait wait;
     private JavascriptExecutor js;
-    private Map<String, Object> vars;
+
 
     @ParameterType("([0-9]{4})-([0-9]{2})-([0-9]{2})")
     public LocalDateTime iso8601Date(String year, String month, String day) {
@@ -33,11 +32,9 @@ public class StatisticsSearchSteps {
     @Given("the user opens Firefox and navigates to the application")
     public void open_firefox_navigate_to_app() {
         driver = new FirefoxDriver();
-        js = (JavascriptExecutor) driver;
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
-        vars = new HashMap<String, Object>();
+        wait = new WebDriverWait(driver, 10);
+        js = driver;
         driver.get("http://localhost:3000/");
-        driver.manage().window().setSize(new Dimension(810, 824));
         {
             WebElement element = driver.findElement(By.cssSelector(".MuiSvgIcon-fontSizeMedium > path"));
             Actions builder = new Actions(driver);
@@ -54,7 +51,8 @@ public class StatisticsSearchSteps {
 
     @When("the user searches for statistics for the country USA on the date 2021-06-17")
     public void theUserSearchesForStatisticsForTheCountryOnTheDate() {
-        driver.findElement(By.id("autocomplete-countries-option-222")).click();
+        WebElement usa = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("autocomplete-countries-option-222")));
+        usa.click();
         driver.findElement(By.id(":r5:")).click();
         driver.findElement(By.cssSelector(".css-fd2y78-MuiSvgIcon-root")).click();
         driver.findElement(By.cssSelector(".PrivatePickersYear-root:nth-child(122) > .PrivatePickersYear-yearButton")).click();

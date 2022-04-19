@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tqs.n97939.covid.service.CovidService;
@@ -17,8 +16,11 @@ import tqs.n97939.covid.service.CovidService;
 public class Controller {
     private final Logger logger = LoggerFactory.getLogger(Controller.class);
 
-    @Autowired
-    private CovidService service;
+    private final CovidService service;
+
+    public Controller(CovidService service) {
+        this.service = service;
+    }
 
     @Operation(summary = "Get all countries/regions.")
     @ApiResponse(responseCode = "200", description = "Got all countries/regions.")
