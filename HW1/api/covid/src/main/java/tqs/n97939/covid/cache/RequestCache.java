@@ -95,7 +95,7 @@ public class RequestCache {
                 try {
                     Thread.sleep(ttl / 2);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.debug(MessageFormat.format("Cache - {0}", e));
                     Thread.currentThread().interrupt();
                 }
             }

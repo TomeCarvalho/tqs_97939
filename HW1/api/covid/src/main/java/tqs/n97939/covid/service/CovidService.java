@@ -31,6 +31,8 @@ public class CovidService {
 
     private static final String CAUGHT_EXCEPTION_FORMAT = "{0} {1}";
 
+    private static final String EXCEPTION_DEBUG_FORMAT = "CovidService - {0}";
+
     public ResponseEntity<String> getCountries(@RequestParam(required = false) String search) {
         logger.info("getCountries called.");
         try {
@@ -40,11 +42,11 @@ public class CovidService {
             return getStringResponseEntity(uriBuilder);
         } catch (IOException | URISyntaxException e) {
             logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
-            e.printStackTrace();
+            logger.debug(MessageFormat.format(EXCEPTION_DEBUG_FORMAT, e));
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (InterruptedException e) {
             logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
-            e.printStackTrace();
+            logger.debug(MessageFormat.format(EXCEPTION_DEBUG_FORMAT, e));
             Thread.currentThread().interrupt();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -59,11 +61,11 @@ public class CovidService {
             return getStringResponseEntity(uriBuilder);
         } catch (IOException | URISyntaxException e) {
             logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
-            e.printStackTrace();
+            logger.debug(MessageFormat.format(EXCEPTION_DEBUG_FORMAT, e));
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (InterruptedException e) {
             logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
-            e.printStackTrace();
+            logger.debug(MessageFormat.format(EXCEPTION_DEBUG_FORMAT, e));
             Thread.currentThread().interrupt();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -78,11 +80,11 @@ public class CovidService {
             return getStringResponseEntity(uriBuilder);
         } catch (IOException | URISyntaxException e) {
             logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
-            e.printStackTrace();
+            logger.debug(MessageFormat.format(EXCEPTION_DEBUG_FORMAT, e));
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (InterruptedException e) {
             logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
-            e.printStackTrace();
+            logger.debug(MessageFormat.format(EXCEPTION_DEBUG_FORMAT, e));
             Thread.currentThread().interrupt();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
