@@ -15,27 +15,37 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.MessageFormat;
 
 @Service
 public class CovidService {
     private final Logger logger = LoggerFactory.getLogger(CovidService.class);
 
-    private final String host = "covid-193.p.rapidapi.com";
+    private static final String HOST = "covid-193.p.rapidapi.com";
 
-    private final String url = "https://" + host;
+    private static final String URL = "https://" + HOST;
 
     private final RequestCache cache = new RequestCache(10000);
+
+    private static final String CAUGHT_EXCEPTION = "Caught exception.\n";
+
+    private static final String CAUGHT_EXCEPTION_FORMAT = "{0} {1}";
 
     public ResponseEntity<String> getCountries(@RequestParam(required = false) String search) {
         logger.info("getCountries called.");
         try {
-            URIBuilder uriBuilder = new URIBuilder(url + "/countries");
+            URIBuilder uriBuilder = new URIBuilder(URL + "/countries");
             if (search != null)
                 uriBuilder.addParameter("search", search);
             return getStringResponseEntity(uriBuilder);
-        } catch (IOException | InterruptedException | URISyntaxException e) {
-            logger.error("Caught exception\n" + e);
+        } catch (IOException | URISyntaxException e) {
+            logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
             e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (InterruptedException e) {
+            logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -43,47 +53,62 @@ public class CovidService {
     public ResponseEntity<String> getCurrentStatistics(@RequestParam(required = false) String country) {
         logger.info("getCurrentStatistics called.");
         try {
-            URIBuilder uriBuilder = new URIBuilder(url + "/statistics");
+            URIBuilder uriBuilder = new URIBuilder(URL + "/statistics");
             if (country != null)
                 uriBuilder.addParameter("country", country);
             return getStringResponseEntity(uriBuilder);
-        } catch (IOException | InterruptedException | URISyntaxException e) {
-            logger.error("Caught exception\n" + e);
+        } catch (IOException | URISyntaxException e) {
+            logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
             e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (InterruptedException e) {
+            logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     public ResponseEntity<String> getHistory(@RequestParam String country, @RequestParam(required = false) String day) {
         try {
-            URIBuilder uriBuilder = new URIBuilder(url + "/history");
+            URIBuilder uriBuilder = new URIBuilder(URL + "/history");
             uriBuilder.addParameter("country", country);
             if (day != null)
                 uriBuilder.addParameter("day", day);
             return getStringResponseEntity(uriBuilder);
-        } catch (IOException | InterruptedException | URISyntaxException e) {
-            logger.error("Caught exception\n" + e);
+        } catch (IOException | URISyntaxException e) {
+            logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
             e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (InterruptedException e) {
+            logger.error(MessageFormat.format(CAUGHT_EXCEPTION_FORMAT, CAUGHT_EXCEPTION, e));
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     private ResponseEntity<String> getStringResponseEntity(URIBuilder uriBuilder) throws URISyntaxException, IOException, InterruptedException {
         URI uri = uriBuilder.build();
-        logger.info("Built URI: " + uri);
+        if (logger.isInfoEnabled() && uri != null)
+            logger.info(MessageFormat.format("Built URI: {0}", uri));
         HttpRequest request = createRapidApiGet(uri);
         HttpResponse<String> response;
-        logger.info("Checking cache for request " + request);
+        if (logger.isInfoEnabled() && request != null)
+            logger.info(MessageFormat.format("Checking cache for request {0}", request));
         ResponseEntity<String> cacheRes = cache.get(request);
         if (cacheRes.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
-            logger.info("Not found in cache: request " + request + ". Sending request to API.");
+            if (logger.isInfoEnabled() && request != null)
+                logger.info(MessageFormat.format("Not found in cache: request {0}. Sending request to API.", request));
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
             ResponseEntity<String> responseEntity = new ResponseEntity<>(response.body(), HttpStatus.valueOf(response.statusCode()));
             cache.put(request, responseEntity);
-            logger.info("Response cached for request: " + request);
+            if (logger.isInfoEnabled() && request != null)
+                logger.info(MessageFormat.format("Response cached for request: {0}", request));
             return responseEntity;
         }
-        logger.info("Found in cache: request " + request);
+        if (logger.isInfoEnabled() && request != null)
+            logger.info(MessageFormat.format("Found in cache: request {0}", request));
         return cacheRes;
     }
 
@@ -92,11 +117,12 @@ public class CovidService {
         String key = "2b40038946msh38761268e33a7fbp1c4bfejsn17b9b063c6b4";
         HttpRequest ret = HttpRequest.newBuilder()
                 .uri(uri)
-                .header("X-RapidAPI-Host", host)
+                .header("X-RapidAPI-Host", HOST)
                 .header("X-RapidAPI-Key", key)
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
-        logger.info("Created HTTP Request: " + ret);
+        if (logger.isInfoEnabled() && ret != null)
+            logger.info(MessageFormat.format("Created HTTP Request: {0}", ret));
         return ret;
     }
 

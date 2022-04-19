@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tqs.n97939.covid.service.CovidService;
 
+import java.text.MessageFormat;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -26,7 +28,8 @@ public class Controller {
     @ApiResponse(responseCode = "200", description = "Got all countries/regions.")
     @GetMapping("/countries")
     public ResponseEntity<String> getCountries(@Parameter(description = "Partial name search query.") @RequestParam(required = false) String search) {
-        logger.info("GET /countries - search = " + search);
+        if (logger.isInfoEnabled())
+            logger.info(MessageFormat.format("GET /countries - search = {0}", search));
         return service.getCountries(search);
     }
 
@@ -34,7 +37,8 @@ public class Controller {
     @ApiResponse(responseCode = "200", description = "Got all of the country/region's COVID-19 statistics.")
     @GetMapping("/statistics")
     public ResponseEntity<String> getCurrentStatistics(@Parameter(description = "Name of the country to be queried.") @RequestParam(required = false) String country) {
-        logger.info("GET /statistics - country = " + country);
+        if (logger.isInfoEnabled())
+            logger.info(MessageFormat.format("GET /statistics - country = {0}", country));
         return service.getCurrentStatistics(country);
     }
 
@@ -45,7 +49,8 @@ public class Controller {
     public ResponseEntity<String> getHistory(
             @Parameter(description = "Name of the country to be queried.") @RequestParam String country,
             @Parameter(description = "Date to be queried, in ISO 8601 format.") @RequestParam(required = false) String day) {
-        logger.info("GET /history - country = " + country + ", day = " + day);
+        if (logger.isInfoEnabled())
+            logger.info(MessageFormat.format("GET /history - country = {0}, day = {1}", country, day));
         return service.getHistory(country, day);
     }
 

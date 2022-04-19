@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.net.http.HttpRequest;
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,19 +26,23 @@ public class RequestCache {
         this.ttl = ttl;
         this.hitCount = 0;
         this.missCount = 0;
-        logger.info("Cache - initialised with TTL = " + ttl);
+        if (logger.isInfoEnabled())
+            logger.info(MessageFormat.format("Cache - initialized with TTL = {0}", ttl));
     }
 
     public ResponseEntity<String> get(HttpRequest key) {
-        logger.info("Cache - checking - request: " + key);
+        if (logger.isInfoEnabled())
+            logger.info(MessageFormat.format("Cache - checking - request: {0}", key));
         ResponseEntity<String> notFound = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         ResponseEntity<String> ret = cache.getOrDefault(key, notFound);
         if (ret.equals(notFound)) {
             missCount++;
-            logger.info("Cache - not found - request: " + key);
+            if (logger.isInfoEnabled())
+                logger.info(MessageFormat.format("Cache - not found - request: {0}", key));
         } else {
             hitCount++;
-            logger.info("Cache - found - request: " + key);
+            if (logger.isInfoEnabled())
+                logger.info(MessageFormat.format("Cache - found - request: {0}", key));
         }
         return ret;
     }
@@ -46,13 +51,15 @@ public class RequestCache {
         Date date = new Date();
         timeMap.put(key, date.getTime());
         cache.put(key, val);
-        logger.info("Cache - stored - request: " + key + " at " + date.getTime());
+        if (logger.isInfoEnabled())
+            logger.info(MessageFormat.format("Cache - stored - request: {0} at {1}", key, date.getTime()));
     }
 
     public void remove(HttpRequest key) {
         cache.remove(key);
         timeMap.remove(key);
-        logger.info("Cache - removed - request: " + key);
+        if (logger.isInfoEnabled())
+            logger.info(MessageFormat.format("Cache - removed - request: {0}", key));
     }
 
     public double hitRatio() {
@@ -89,15 +96,16 @@ public class RequestCache {
                     Thread.sleep(ttl / 2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }
         }
 
         private void cleanMap() {
             long currentTime = new Date().getTime();
-            for (HttpRequest key : timeMap.keySet())
-                if (currentTime > (timeMap.get(key) + ttl))
-                    remove(key);
+            for (Map.Entry<HttpRequest, Long> entry : timeMap.entrySet())
+                if (currentTime > (entry.getValue() + ttl))
+                    remove(entry.getKey());
         }
     }
 }

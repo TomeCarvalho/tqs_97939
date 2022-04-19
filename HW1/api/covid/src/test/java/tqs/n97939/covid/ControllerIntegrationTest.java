@@ -17,7 +17,7 @@ import static tqs.n97939.covid.ControllerWithMockServiceTest.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = CovidApplication.class)
 @AutoConfigureMockMvc
-public class ControllerIntegrationTest {
+class ControllerIntegrationTest {
     @Autowired
     private MockMvc mvc;
 

@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notANumber;
 import static org.hamcrest.core.Is.is;
 
-public class RequestCacheTests {
+class RequestCacheTests {
     private RequestCache cache;
     private static final long LONG_TTL = 1000000;
     private static final long SHORT_TTL = 1;
