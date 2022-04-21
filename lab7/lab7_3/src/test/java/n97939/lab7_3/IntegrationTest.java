@@ -1,11 +1,9 @@
 package n97939.lab7_3;
 
-import lombok.extern.slf4j.Slf4j;
 import n97939.lab7_3.data.Employee;
 import n97939.lab7_3.data.EmployeeRepository;
 import n97939.lab7_3.util.JsonUtils;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +18,8 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,8 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Lab73Application.class)
 @TestPropertySource(properties = "spring.jpa.hibernate.ddl-auto=create")
 @AutoConfigureMockMvc
-@Slf4j
-public class IntegrationTest {
+class IntegrationTest {
     @Container
     public static PostgreSQLContainer container = new PostgreSQLContainer("postgres:12")
             .withUsername("user")
@@ -57,12 +56,10 @@ public class IntegrationTest {
     public void setUpTestEmployees() throws Exception {
         jim = repository.save(new Employee("Jim Halpert", "jim@dundermifflin.com"));
         creed = repository.save(new Employee("Creed Bratton", "creed@dundermifflin.com"));
-        log.info("here");
-        System.out.println(repository.findAll().size());
     }
 
     @Test
-    public void testAddEmployee() throws Exception {
+    void testAddEmployee() throws Exception {
         String endpoint = UriComponentsBuilder.newInstance()
                 .scheme("http")
                 .host("127.0.0.1")
@@ -75,5 +72,6 @@ public class IntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(JsonUtils.toJson(pam)))
                 .andExpect(status().isCreated());
+        assertThat(repository.findAll().size(), equalTo(3));
     }
 }
