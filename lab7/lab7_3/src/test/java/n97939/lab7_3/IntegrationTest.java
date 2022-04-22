@@ -37,6 +37,7 @@ class IntegrationTest {
 
     @LocalServerPort
     int testPort;
+
     Employee jim, creed;
 
     @Autowired
