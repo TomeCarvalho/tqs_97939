@@ -25,7 +25,7 @@ public class CovidService {
 
     private static final String URL = "https://" + HOST;
 
-    private final RequestCache cache = new RequestCache(10000);
+    private final RequestCache cache = new RequestCache(300000); // 5 min
 
     private static final String CAUGHT_EXCEPTION = "Caught exception.\n";
 
